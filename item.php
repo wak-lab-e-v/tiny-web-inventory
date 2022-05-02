@@ -1,37 +1,35 @@
 <?php
+// debug only:
+// ini_set('display_errors', 1);
+// error_reporting(E_ALL);
 
-require 'Mustache/Autoloader.php';
-Mustache_Autoloader::register();
-$m = new Mustache_Engine(array(
-    'template_class_prefix' => '__MyTemplates_',
-    'cache_lambda_templates' => false,
-    'loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__).'/views'),
-    'partials_loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__).'/views/partials'),
-    'helpers' => array('i18n' => function($text) {
-        // do something translatey here...
-    }),
-    'escape' => function($value) {
-        return htmlspecialchars($value, ENT_COMPAT, 'UTF-8');
-    },
-    'charset' => 'ISO-8859-1',
-    'logger' => new Mustache_Logger_StreamLogger('php://stderr'),
-    'strict_callables' => true,
-    'pragmas' => [Mustache_Engine::PRAGMA_FILTERS],
-));
+// Create new Plates instance
+require __DIR__.'/plates/src/Engine.php';
+require __DIR__.'/plates/src/Template/Directory.php';
+require __DIR__.'/plates/src/Template/FileExtension.php';
+require __DIR__.'/plates/src/Template/Folders.php';
+require __DIR__.'/plates/src/Template/Functions.php';
+require __DIR__.'/plates/src/Template/Data.php';
+require __DIR__.'/plates/src/Template/Template.php';
+require __DIR__.'/plates/src/Template/Name.php';
+require __DIR__.'/plates/src/Template/Func.php';
+require __DIR__.'/plates/src/Template/Folder.php';
+
+$tpl = new League\Plates\Engine(__DIR__.'/views','tpl');
 
 // get item id from HTTP_GET request
 $iID = $_GET['id'];
 
 // syntax check, only 6 digits allowed
 if ( !preg_match_all("/^([0-9]{6})*$/i", $iID) ) {
-    $tpl = $m->loadTemplate('error');
-    die($tpl->render(array('errorMsg' => 'ITEM ID - SYNTAX CHECK FAILED')));
+    echo $tpl->render('error', ['error' => 'SYNTAX CHECK ERROR'] ); 
+    die();
 }
 
 // check for config iID.json
 if ( !file_exists("items/".$iID.".json") ) {
-    $tpl = $m->loadTemplate('error');
-    die($tpl->render(array('errorMsg' => 'ITEM NOT FOUND')));
+    echo $tpl->render('error', ['error' => 'ITEM NOT FOUND'] );
+    die('');
 }
 
 // read json
@@ -45,9 +43,10 @@ $itemJson = json_decode($jString, true);
 //pwd_md5 = md5(pwd);
 
 // show data
-$tpl = $m->loadTemplate('showItem');
-echo $tpl->render($itemJson)
+echo $tpl->render('item', $itemJson );
 
+// debug:
+// print_r( $itemJson );
 ?>
 
 
