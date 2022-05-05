@@ -20,8 +20,8 @@ $tpl = new League\Plates\Engine(__DIR__.'/views','tpl');
 // get item id from HTTP_GET request
 $iID = $_GET['id'];
 
-// syntax check, only 6 digits allowed
-if ( !preg_match_all("/^([0-9]{6})*$/i", $iID) ) {
+// syntax check, only 5 digits allowed
+if ( !preg_match_all("/^([0-9]{5})*$/i", $iID) ) {
     echo $tpl->render('error', ['error' => 'SYNTAX CHECK ERROR'] ); 
     die();
 }
