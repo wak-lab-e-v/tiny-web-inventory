@@ -1,6 +1,16 @@
 <?php $this->insert('partials/header') ?>
 
-
+<div class="row">
+      <div class="col-2">
+            <span class="badge bg-primary">ID</span>
+      </div>
+      <div class="col-6">
+            <h2><?=$this->e($ITEM_ID)?> </h2>
+      </div>
+      <div class="col-4">
+            <img src="createQR.php?id=<?=$this->e($ITEM_ID)?>" />
+      </div>
+</div>
 
 <div class="row">
       <div class="col-2">

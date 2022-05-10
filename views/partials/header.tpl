@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>awesome</title>
+    <title><?=$this->e($SITE_NAME)?></title>
     
-      <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+      <link rel="stylesheet" href="/include/bootstrap/css/bootstrap.css">
     
   </head>
   <body>
 
   <div class="container">
   <p/>
-  <h1><span class="badge bg-secondary">WAK-Lab Inventar</span></h1>
+  <h1><span class="badge bg-secondary"><?=$this->e($SITE_NAME)?></span></h1>
 
