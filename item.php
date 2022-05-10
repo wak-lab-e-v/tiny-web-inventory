@@ -1,7 +1,6 @@
 <?php
-// debug only:
-// ini_set('display_errors', 1);
-// error_reporting(E_ALL);
+
+require __DIR__.'config.php';
 
 // Create new Plates instance
 require __DIR__.'/plates/src/Engine.php';
@@ -27,7 +26,7 @@ if ( !preg_match_all("/^([0-9]{5})*$/i", $iID) ) {
 }
 
 // check for config iID.json
-if ( !file_exists("items/".$iID.".json") ) {
+if ( !file_exists($ITEMS_PATH.$iID.".json") ) {
     echo $tpl->render('error', ['error' => 'ITEM NOT FOUND'] );
     die('');
 }
