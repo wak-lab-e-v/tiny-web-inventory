@@ -3,7 +3,7 @@
 ob_start("callback");
 
 require('config.php');
-include('include/phpqrcode/qrlib.php');
+include( IMPORT_PATH . '/phpqrcode/qrlib.php');
 
     $iID = $_GET['id']; // remember to sanitize that - it is user input!
         
