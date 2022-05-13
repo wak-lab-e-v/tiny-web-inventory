@@ -1,5 +1,7 @@
 <?php
 
+ob_start("callback");
+
 require('config.php');
 include('include/phpqrcode/qrlib.php');
 
@@ -11,20 +13,13 @@ include('include/phpqrcode/qrlib.php');
         die();
     }
 
-    // we need to be sure ours script does not output anything!!!
-    // otherwise it will break up PNG binary!
-
-    ob_start("callback");
-
-    
     $codeText = SITE_INVENTARY_URL.$iID;
 
-    // end of processing here
-    $debugLog = ob_get_contents();
+    // $debugLog = ob_get_contents();
     ob_end_clean();
 
     // outputs image directly into browser, as PNG stream
-    QRcode::png($codeText);
+    QRcode::png($codeText, $filename = false, $dotSize = 4, $pixelSize = 3, $frameSize = 2);
 
 
 ?>

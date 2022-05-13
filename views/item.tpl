@@ -1,5 +1,6 @@
 <?php $this->insert('partials/header') ?>
 
+<div class="container-fluid" style="margin-top:20px; padding: 20px; background-color: lightgray;">
 <div class="row">
       <div class="col-2">
             <span class="badge bg-primary">ID</span>
@@ -46,6 +47,8 @@
       <div class="col-10">
             <h2><?=$this->e($modified)?> </h2>
       </div>
+</div>
+
 </div>
 
 <?php $this->insert('partials/footer') ?>
