@@ -1,6 +1,15 @@
 <?php $this->insert('partials/header') ?>
 
-<div class="container-fluid" style="margin-top:20px; padding: 20px; background-color: lightgray;">
+<div class="container-fluid" style="margin:20px; padding: 20px; background-color: lightgray;">
+
+<div class="row">
+      <div class="col-2">
+            <span class="badge bg-primary">Name</span>
+      </div>
+      <div class="col-10">
+            <h2><?=$this->e($itemCaption)?> </h2>
+      </div>
+</div>
 <div class="row">
       <div class="col-2">
             <span class="badge bg-primary">ID</span>
@@ -12,15 +21,11 @@
             <img src="createQR.php?id=<?=$this->e($ITEM_ID)?>" />
       </div>
 </div>
-
-<div class="row">
-      <div class="col-2">
-            <span class="badge bg-primary">Name</span>
-      </div>
-      <div class="col-10">
-            <h2><?=$this->e($itemCaption)?> </h2>
-      </div>
 </div>
+
+
+<div class="container-fluid" style="margin:20px; padding: 20px; background-color: lightgray;">
+
 
 <div class="row">
       <div class="col-2">
@@ -36,7 +41,7 @@
             <span class="badge bg-warning text-dark">Erstellt</span>
       </div>
       <div class="col-10">
-            <h2><?=$this->e($created)?> </h2>
+            <h2><?=$this->e($createdFormated)?> </h2>
       </div>
 </div>
 
@@ -45,7 +50,7 @@
             <span class="badge bg-warning text-dark">Letzte Änderung</span>
       </div>
       <div class="col-10">
-            <h2><?=$this->e($modified)?> </h2>
+            <h2><?=$this->e($modifiedFormated)?> </h2>
       </div>
 </div>
 

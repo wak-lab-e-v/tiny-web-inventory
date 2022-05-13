@@ -3,7 +3,7 @@
   <head>
     <title><?=$this->e($SITE_NAME)?></title>
     
-      <link rel="stylesheet" href="/include/bootstrap/css/bootstrap.css">
+      <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
     
   </head>
   <body>

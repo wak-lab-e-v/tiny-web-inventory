@@ -21,8 +21,13 @@ $tpl->addData(['ITEM_ID' => $iID]);
 
 // read json
 $jString = file_get_contents("items/".$iID.".json");
-$itemJson = json_decode($jString, true);
 
+$dateCreated = new DateTime($jString->{'created'});
+$dateModified = new DateTime($jString->{'modified'});
+
+$itemJson = json_decode($jString, true);
+$itemJson['createdFormated'] = $dateCreated->format('d.m.Y, H:i');
+$itemJson['modifiedFormated'] = $dateModified->format('d.m.Y, H:i');
 
 // check protection/password request
 // check password send
